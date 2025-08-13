@@ -38,6 +38,8 @@ nav a {
     color: white;
 }
 
+
+/* Day 2 CSS */
 #top-menu a:hover {
     background-color: var(--sub-menu-bg);
 }
