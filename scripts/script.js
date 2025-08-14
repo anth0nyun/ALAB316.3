@@ -1,20 +1,26 @@
 // Menu data structure
 var menuLinks = [
-  {text: 'about', href: '/about'},
-  {text: 'catalog', href: '#', subLinks: [
-    {text: 'all', href: '/catalog/all'},
-    {text: 'top selling', href: '/catalog/top'},
-    {text: 'search', href: '/catalog/search'},
-  ]},
-  {text: 'orders', href: '#' , subLinks: [
-    {text: 'new', href: '/orders/new'},
-    {text: 'pending', href: '/orders/pending'},
-    {text: 'history', href: '/orders/history'},
-  ]},
-  {text: 'account', href: '#', subLinks: [
-    {text: 'profile', href: '/account/profile'},
-    {text: 'sign out', href: '/account/signout'},
-  ]},
+  { text: 'about', href: '/about' },
+  {
+    text: 'catalog', href: '#', subLinks: [
+      { text: 'all', href: '/catalog/all' },
+      { text: 'top selling', href: '/catalog/top' },
+      { text: 'search', href: '/catalog/search' },
+    ]
+  },
+  {
+    text: 'orders', href: '#', subLinks: [
+      { text: 'new', href: '/orders/new' },
+      { text: 'pending', href: '/orders/pending' },
+      { text: 'history', href: '/orders/history' },
+    ]
+  },
+  {
+    text: 'account', href: '#', subLinks: [
+      { text: 'profile', href: '/account/profile' },
+      { text: 'sign out', href: '/account/signout' },
+    ]
+  },
 ];
 
 
@@ -42,10 +48,10 @@ topMenuEl.classList.add('flex-around');
 // Part 3 -------------------------------------------
 
 for (const link of menuLinks) {
-    const menuButton = document.createElement("a");
-    menuButton.href = link.href;
-    menuButton.textContent = link.text;
-    topMenuEl.appendChild(menuButton);
+  const menuButton = document.createElement("a");
+  menuButton.href = link.href;
+  menuButton.textContent = link.text;
+  topMenuEl.appendChild(menuButton);
 }
 
 // Section 2 Part 3
@@ -64,6 +70,18 @@ subMenuEl.style.top = '0';
 
 
 // Section 2 Part 4
+
+const topMenuLinks = document.querySelectorAll('topMenuEl');
+
+topMenuEl.addEventListener('click', function handleGreet(event) {
+  event.preventDefault();
+  if (event.target.tagName !== 'A') return;
+  console.log(event.target.textContent);
+});
+
+
+
+
 
 
 
