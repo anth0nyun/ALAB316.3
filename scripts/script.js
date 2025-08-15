@@ -84,23 +84,37 @@ topMenuEl.addEventListener('click', function handleGreet(event) {
   if (!wasActive) clicked.classList.add('active');
 
 
-// Section 2 Part 5
+  // Section 2 Part 5
 
-const linkText = clicked.textContent.toLowerCase();
-const linkData = menuLinks.find(l => l.text === linkText);
+  const linkText = clicked.textContent.toLowerCase();
+  const linkData = menuLinks.find(l => l.text === linkText);
 
-if (!wasActive) {
-  if (linkData && linkData.subLinks) {
-    subMenuEl.style.top = '100%';
+  if (!wasActive) {
+    if (linkData && linkData.subLinks) {
+      buildSubmenu(linkData.subLinks);
+      subMenuEl.style.top = '100%';
+    } else {
+      subMenuEl.style.top = '0';
+      subMenuEl.innerHTML = '';
+    }
   } else {
     subMenuEl.style.top = '0';
+    subMenuEl.innerHTML = '';
   }
-} else {
-  subMenuEl.style.top = '0';
 }
+);
 
-console.log(clicked.textContent);
-});
+function buildSubmenu(subLinks) {
+
+  subMenuEl.innerHTML = '';
+
+  for (const link of subLinks) {
+    const a = document.createElement('a');
+    a.href = link.href;
+    a.textContent = link.text;
+    subMenuEl.appendChild(a);
+  }
+}
 
 
 
