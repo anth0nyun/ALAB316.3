@@ -71,14 +71,36 @@ subMenuEl.style.top = '0';
 
 // Section 2 Part 4
 
-const topMenuLinks = document.querySelectorAll('topMenuEl');
+const topMenuLinks = topMenuEl.querySelectorAll('a');
 
 topMenuEl.addEventListener('click', function handleGreet(event) {
   event.preventDefault();
   if (event.target.tagName !== 'A') return;
-  console.log(event.target.textContent);
-});
 
+  const clicked = event.target;
+  const wasActive = clicked.classList.contains('active');
+
+  topMenuLinks.forEach(link => link.classList.remove('active'));
+  if (!wasActive) clicked.classList.add('active');
+
+
+// Section 2 Part 5
+
+const linkText = clicked.textContent.toLowerCase();
+const linkData = menuLinks.find(l => l.text === linkText);
+
+if (!wasActive) {
+  if (linkData && linkData.subLinks) {
+    subMenuEl.style.top = '100%';
+  } else {
+    subMenuEl.style.top = '0';
+  }
+} else {
+  subMenuEl.style.top = '0';
+}
+
+console.log(clicked.textContent);
+});
 
 
 
